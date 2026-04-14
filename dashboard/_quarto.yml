@@ -1,6 +1,6 @@
 project:
   title: "HackODS"
   type: website
-  output-dir: docs
+  output-dir: ../docs
 
 
