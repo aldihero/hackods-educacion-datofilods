@@ -1,0 +1,148 @@
+---
+title: "La Educación Puede Esperar, el Hambre No"
+author: "DatofilODS"
+format: 
+  dashboard:
+    theme: cosmo
+    scrolling: true
+---
+
+```{python}
+#| label: setup
+#| include: false
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+import json
+
+# Cargar datos
+df = pd.read_csv('../datos/porcentajes.csv')
+df = df[df['estado'] != 'Estados Unidos Mexicanos']
+
+# Cargar GeoJSON
+with open('../datos/states_simple.geojson', 'r', encoding='utf-8') as f:
+    mexico_geojson = json.load(f)
+
+años = sorted(df['anio'].unique())
+
+# Filtrar solo el año 2022 (temporal)
+df_2022 = df[df['anio'] == 2022]
+```
+
+## Column 
+
+### Inasistencia Escolar {width=50%}
+
+```{python}
+#| title: "Brecha de inasistencia entre infancias y jóvenes - 2022"
+
+df_2022_sorted = df_2022.sort_values('porc_tasa_inasistencia_3_15', ascending=False)
+
+df_edu_long = pd.melt(
+    df_2022_sorted,
+    id_vars=['estado'],
+    value_vars=['porc_tasa_inasistencia_3_15', 'porc_tasa_inasistencia_16_21'],
+    var_name='grupo',
+    value_name='porcentaje'
+)
+
+df_edu_long['grupo'] = df_edu_long['grupo'].map({
+    'porc_tasa_inasistencia_3_15': 'Infancias (3-15)',
+    'porc_tasa_inasistencia_16_21': 'Juventud (16-21)'
+})
+
+
+fig_edu = px.bar(
+    df_edu_long,
+    y='estado',
+    x='porcentaje',
+    color='grupo',
+    orientation='h',
+    barmode='group',
+    color_discrete_map={
+        'Infancias (3-15)': '#0860ED',
+        'Juventud (16-21)': '#F3487E'
+    },
+    title="<b>Inasistencia Escolar en 2022</b>",
+    labels={'porcentaje': 'Porcentaje (%)', 'estado': '', 'grupo': ''},
+    range_x=[0, 80],
+    height=800,
+    category_orders={'estado': df_2022_sorted['estado'].tolist()}  
+)
+
+fig_edu
+```
+
+
+### Seguridad Alimentaria {width=50%}
+
+```{python}
+#| title: "Niveles de inseguridad alimentaria por estado - 2022"
+df_2022_sorted_hambre = df_2022.sort_values('porc_inseg_aliment_seve', ascending=False)
+
+df_hambre_long = pd.melt(
+    df_2022_sorted_hambre,
+    id_vars=['estado'],
+    value_vars=[
+        'porc_seg_aliment',
+        'porc_inseg_aliment_leve',
+        'porc_inseg_aliment_mode',
+        'porc_inseg_aliment_seve'
+    ],
+    var_name='nivel',
+    value_name='porcentaje'
+)
+
+df_hambre_long['nivel'] = df_hambre_long['nivel'].map({
+    'porc_seg_aliment': 'Seguridad',
+    'porc_inseg_aliment_leve': 'Leve',
+    'porc_inseg_aliment_mode': 'Moderada',
+    'porc_inseg_aliment_seve': 'Severa (Hambre)'
+})
+
+
+fig_hambre = px.bar(
+    df_hambre_long,
+    y='estado',
+    x='porcentaje',
+    color='nivel',
+    orientation='h',
+    barmode='stack',
+    color_discrete_map={
+        'Seguridad': '#2E7D32',
+        'Leve': '#FBC02D',
+        'Moderada': '#EF6C00',
+        'Severa (Hambre)': '#C62828'
+    },
+    title="<b>Distribución Alimentaria en 2022</b>",
+    labels={'porcentaje': 'Porcentaje (%)', 'estado': '', 'nivel': ''},
+    range_x=[0, 100],
+    height=800,
+    category_orders={'estado': df_2022_sorted_hambre['estado'].tolist()}  
+)
+
+fig_hambre
+```
+
+## Row 
+
+### Mapa de carencia alimentaria
+
+```{python}
+#| title: "Inseguridad Alimentaria Severa por Estado - 2022"
+fig_mapa = px.choropleth(
+    df_2022,
+    geojson=mexico_geojson,
+    locations='estado',
+    featureidkey='properties.NOMGEO',
+    color='porc_inseg_aliment_seve',
+    color_continuous_scale="Reds",
+    range_color=[0, 25],
+    labels={'porc_inseg_aliment_seve': 'Hambre (%)'},
+    title="<b>Inseguridad Alimentaria Severa en 2022</b>",
+    height=450,
+    fitbounds="locations"
+)
+
+fig_mapa
+```
