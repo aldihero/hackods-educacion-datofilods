@@ -37,4 +37,4 @@ de inseguridad de hambre
 ### NO usamos IA para hacer lo siguiente:
 - La búsqueda y selección de las bases de datos para nuestro proyecto
 - La pregunta de interés a desarrollar en nuestro dashboard
-- Estructura de nuestros gráficos para reflejar indicadores
+- Selección de indicadores para nuestro mapa de México
