@@ -12,9 +12,11 @@ Estudiante de maestría con gran interés en los problemas sociales de México q
 ---
 [Declaración de uso de IA](ai-log.md)
 ---
+
 ---
 [Licencia](LICENSE.md)
 ---
+
 ## Descripción del proyecto
 "La educación puede esperar, el hambre no" es un proyecto que busca cuestionar y desmontar el sesgo social detrás de la frase "pues que se pongan a estudiar en vez de…", evidenciando que el acceso a la educación no es únicamente una cuestión de voluntad individual, sino que está profundamente ligado a la pobreza multidimensional en México. A partir de los datos del CONEVAL, queremos  analizar si realmente todas las personas pueden acceder a la educación en condiciones de rezago educativo, carencia por acceso a la alimentación y otras privaciones. Este trabajo se alinea con el *ODS 4* (Educación de calidad) y *ODS 2* (Hambre cero).
 
