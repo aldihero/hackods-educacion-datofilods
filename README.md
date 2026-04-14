@@ -4,9 +4,10 @@
 ### Alma Diana Herrera Ortiz
 Estudiante de maestría con gran interés en los problemas sociales de México que estén relacionados con el desarrollo del país. Con formación en ingeniería en sistemas y actualmente trabajando en el sector fintech con herramientas en la nube para automatización de infraestructura. 
 
-### Santiago
+### Santiago Botero Sierra
+ Estudiante de maestría en Ciencia de Datos, con formación en ingeniería, derecho y economía. Disfruto mucho analizar datos para contribuir a la toma de decisiones en el sector público, en organizaciones de la sociedad civil y en la defensa de los derechos humanos de las y los migrantes. Más información en [mi página de internet](sboteros.com).
 
-### Daniel
+### Daniel Mondragon Tapia
 
 [Declaración de uso de IA](ai-log.md)
 
@@ -15,8 +16,9 @@ Estudiante de maestría con gran interés en los problemas sociales de México q
 
 ## Datos
 
-- **Fuente** Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL). (2022). "Anexo estadísti​co de pobreza en México". [Base de datos en línea]. Recuperado el 7 de abril de 2026 de https://www.coneval.org.mx/Medicion/MP/Documents/MMP_2022/AE_estatal_2022.zip Para condiciones de uso https://www.coneval.org.mx/Paginas/Pie/terminos-uso-libre.aspx 
-
+- **Fuentes** 
+    - Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL). (2022). "Anexo estadísti​co de pobreza en México". [Base de datos en línea]. Recuperado el 7 de abril de 2026 de https://www.coneval.org.mx/Medicion/MP/Documents/MMP_2022/AE_estatal_2022.zip Para condiciones de uso https://www.coneval.org.mx/Paginas/Pie/terminos-uso-libre.aspx 
+    - INEGI  
 - **Fecha de descarga** 07-abril-2026
 - **Licencia Uso Libre con Atribución** Permite copia, distribución, adaptación y uso comercial, siempre que se dé crédito al CONEVAL, no se alteren metadatos, no se tergiverse el sentido original y no se implique aval oficial.
 - **Descripción de variables** Se tomaron en cuenta variables relacionadas a rezago educativo, carencia alimentaria y carencias en general. Los valores de todas las variables exceptuando `'estado'` y `'anio'` indican porcentajes.
@@ -41,8 +43,9 @@ Estudiante de maestría con gran interés en los problemas sociales de México q
 
 
 # Storytelling
-- Pregunta o problema central — Pregunta clara que guía el tablero
-- Coherencia narrativa — Coherencia entre ODS, datos e historia
-- Potencial de impacto — Visibiliza un problema real en México
+
+Como se menciona en la descripción de este proyecto el problema que se quiere abordar es hacer visible el sesgo que tenemos como población sobre que no todos pueden estudiar tan facilmente, no basta con que la educación sea gratuita por lo que queremos contestar a la pregunta ¿Es verdad que todos podemos acceder a la educación?, para poder sensibilizar a la población y evitar que se siga propagando ese pensamiento dañino para todos en la sociedad acerca de "pues que se pongan a estudiar en vez de …", es un pensamiento limitante para todos y evita buscar soluciones al problema. Para poder evidenciarlo queremos resaltar los datos que muestran a las poblaciones que dejan de asistir a la escuela especialmente en el nivel educativo básico y cómo se relaciona con los niveles de pobreza en diferentes ámbitos como lo es la alimentación, carencias sociales y carencias en general, así como también resaltar las tasas de abandono escolar en ese nivel para reflejar un poco mejor cómo está México. Es importante compartir una visualización completa del país para indicar a dónde que tenemos que voltear y proponer soluciones, el hecho de hacer conscientización ayudará a que como sociedad podamos solventar esas carencias y dejemos de señalar sin argumentos. 
 
 # Prototipo
+
+El siguiente es el enlace al avance del [tablero](https://aldihero.github.io/hackods-educacion-datofilods/HackODS.html)
