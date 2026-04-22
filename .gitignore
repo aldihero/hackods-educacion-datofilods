@@ -5,3 +5,4 @@ __pycache__/
 .quarto
 /dashboard/.quarto
 /datos/.~lock.cuadro27_pobreza_porgrupo_etarios_parte2.csv#
+/datos/fuentes
