@@ -1,3 +1,5 @@
+
+#%%
 import pandas as pd
 import numpy as np 
 from functools import reduce
@@ -26,6 +28,7 @@ def formatearIndicador(datos, cols, valor='valor'):
     df_long['anio'] = df_long['anio'].map(mapeo)
     return df_long
 
+#%%
 # --- Datos de rezago educativo ---
 cuadro26A = limpiar("../datos/cuadro26A_rezago_educativo.csv", 9, 7, True)
 
@@ -38,6 +41,7 @@ tmp5 = formatearIndicador(cuadro26A, [f'col{i}' for i in range(17, 21)], 'porc_t
 dfs = [tmp1, tmp2, tmp3, tmp4, tmp5] 
 datosCompletos = reduce(lambda left, right: pd.merge(left, right, on=['estado', 'anio'], how='outer'), dfs)
 
+#%%
 # --- Datos de carencia alimentaria ---
 cuadro26F = limpiar("../datos/cuadro26F_carencia_alimentacion.csv", 8, 6, False)
 tmp_a1 = formatearIndicador(cuadro26F, [f'col{i}' for i in range(1, 5)], 'porc_seg_aliment')
@@ -50,6 +54,7 @@ dfs_alim = [tmp_a1, tmp_a2, tmp_a3, tmp_a4, tmp_a5]
 dfsAlim = reduce(lambda left, right: pd.merge(left, right, on=['estado', 'anio'], how='outer'), dfs_alim)
 datosCompletos = pd.merge(datosCompletos, dfsAlim, on=['estado', 'anio'], how='outer')
 
+#%%
 # --- Datos de carencias (AJUSTE 2: Variables corregidas) ---
 cuadro27 = limpiar("../datos/cuadro27_pobreza_porgrupo_etarios.csv", 8, 6, False)
 tmp_c1 = formatearIndicador(cuadro27, [f'col{i}' for i in range(25, 29)], 'porc_carencia_menor18')
@@ -62,6 +67,7 @@ dfs_car = [tmp_c1, tmp_c2, tmp_c3]
 dfsCar = reduce(lambda left, right: pd.merge(left, right, on=['estado', 'anio'], how='outer'), dfs_car)
 datosCompletos = pd.merge(datosCompletos, dfsCar, on=['estado', 'anio'], how='outer')
 
+#%%
 # --- Datos de abandono escolar (INEGI) ---
 df_edu_raw = pd.read_csv('../datos/Tasa_abandono_escolar_entidad_federativa.csv', skiprows=5)
 df_edu_raw.columns = [c.strip() for c in df_edu_raw.columns]
@@ -96,6 +102,7 @@ df_pivoted = df_pivoted.rename(columns={
     'Superior': 'tasa_abandono_superior'
 })
 
+#%%
 # --- Unión Final (AJUSTE 3: Eliminación de columna y Merge) ---
 if 'Unnamed: 0' in datosCompletos.columns:
     datosCompletos = datosCompletos.drop(columns=['Unnamed: 0'])
@@ -104,19 +111,21 @@ if 'Unnamed: 0' in datosCompletos.columns:
 datosCompletos = pd.merge(datosCompletos, df_pivoted, on=['estado', 'anio'], how='outer')
 
 # Guardar
-datosCompletos.to_csv("../datos/porcentajes.csv", index=False)
-print("¡Archivo unificado con éxito!")
+# datosCompletos.to_csv("../datos/porcentajes.csv", index=False)
+# print("¡Archivo unificado con éxito!")
 
 #%%
 
-df = pd.read_csv("../datos/porcentajes.csv")
+# df = pd.read_csv("../datos/porcentajes.csv")
 # %%
 
-import pandas as pd
+# import pandas as pd
 
 # 1. Cargar los archivos
-df_porc = pd.read_csv('../datos/porcentajes.csv')
+# df_porc = pd.read_csv('../datos/porcentajes.csv')
 # El archivo ENTI tiene 5 filas de encabezado antes de los datos reales
+#%% 
+# --- Datos de hogares con menores de 5 a 17 años 
 df_enti_raw = pd.read_csv('../datos/cuadro4_1_pobTotal_conmenores5_17_años.csv', skiprows=5)
 
 # 2. Limpieza de los datos de población (ENTI 2022)
@@ -142,17 +151,20 @@ df_enti['pob_total_hogares_menores_5_17'] = (
 df_enti['anio'] = 2022
 
 # Filtramos para quedarnos solo con filas que sean estados reales (evitar notas al pie)
-estados_validos = df_porc['estado'].unique()
+estados_validos = datosCompletos['estado'].unique()
 df_enti = df_enti[df_enti['estado'].isin(estados_validos)]
 
-# # 3. Integración (Merge)
-# # Unimos la nueva columna al archivo original basándonos en Estado y Año (2022)
-# df_final = pd.merge(df_porc, df_enti[['estado', 'anio', 'pob_total_hogares_menores_5_17']], 
-#                      on=['estado', 'anio'], 
-#                      how='left')
+# 3. Integración (Merge)
+# Unimos la nueva columna al archivo original basándonos en Estado y Año (2022)
+df_final = pd.merge(datosCompletos, df_enti[['estado', 'anio', 'pob_total_hogares_menores_5_17']], 
+                     on=['estado', 'anio'], 
+                     how='left')
 
+#%%
 # # 4. Guardar el resultado
-# df_final.to_csv('porcentajes_unificados_poblacion.csv', index=False)
+df_final.to_csv('porcentajes_2.csv', index=False)
 
-# print("¡Integración completada con éxito!")
-# print(f"Nueva columna añadida: 'pob_total_hogares_menores_5_17'")
+print("¡Integración completada con éxito!")
+print(f"Nueva columna añadida: 'pob_total_hogares_menores_5_17'")
+
+# %%
