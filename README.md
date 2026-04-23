@@ -1,13 +1,17 @@
 # Equipo DatofilODS
+
 ## Integrantes
 
 ### Alma Diana Herrera Ortiz
+
 Estudiante de maestría con gran interés en los problemas sociales de México que estén relacionados con el desarrollo del país. Con formación en ingeniería en sistemas y actualmente trabajando en el sector fintech con herramientas en la nube para automatización de infraestructura. 
 
 ### Santiago Botero Sierra
+
 Estudiante de maestría en Ciencia de Datos, con formación en ingeniería, derecho y economía. Disfruto mucho analizar datos para contribuir a la toma de decisiones en el sector público, en organizaciones de la sociedad civil y en la defensa de los derechos humanos de las y los migrantes. Más información en [mi página de internet](sboteros.com).
 
 ### Daniel Mondragon Tapia
+
 Desarrollador de Software con enfoque en sistemas de alto rendimiento. Estudiante en Economía. Me interesa la intersección entre la tecnología y las ciencias sociales.
 
 [Declaración de uso de IA](ai-log.md)
