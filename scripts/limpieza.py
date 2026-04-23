@@ -31,7 +31,7 @@ def formatearIndicador(datos, cols, valor='valor'):
 #%%
 """Datos de rezago educativo"""
 
-cuadro26A = limpiar("../Datos/cuadro26A_rezago_educativo.csv", 9,7, True)
+cuadro26A = limpiar("../datos/cuadro26A_rezago_educativo.csv", 9,7, True)
 
 cols = [f'col{i}' for i in range(1, 5)]
 tmp1 = formatearIndicador(cuadro26A, cols, 'porc_pob_3_21_no_asist_sin_oblig')
@@ -55,7 +55,7 @@ datosCompletos = reduce(lambda left, right: pd.merge(left, right, on=['estado', 
 # %%
 """Datos de carencia alimentaria"""
 
-cuadro26F = limpiar("../Datos/cuadro26F_carencia_alimentacion.csv", 8,6, False )
+cuadro26F = limpiar("../datos/cuadro26F_carencia_alimentacion.csv", 8,6, False )
 cols = [f'col{i}' for i in range(1, 5)]
 tmp1 = formatearIndicador(cuadro26F, cols, 'porc_seg_aliment')
 
@@ -79,11 +79,11 @@ datosCompletos = pd.merge(datosCompletos, dfsTemp, on=['estado', 'anio'], how='o
 # %%
 
 """Datos de carencias"""
-cuadro27 = limpiar("../Datos/cuadro27_pobreza_porgrupo_etarios.csv", 8,6, False )
+cuadro27 = limpiar("../datos/cuadro27_pobreza_porgrupo_etarios.csv", 8,6, False )
 cols = [f'col{i}' for i in range(25, 29)]
 tmp1 = formatearIndicador(cuadro26F, cols, 'porc_carencia_menor18')
 
-cuadro28 = limpiar("../Datos/cuadro28_pobreza_porgrupo_etarios_parte2.csv", 7,6, False )
+cuadro28 = limpiar("../datos/cuadro28_pobreza_porgrupo_etarios_parte2.csv", 7,6, False )
 cols = [f'col{i}' for i in range(13, 17)]
 tmp2 = formatearIndicador(cuadro26F, cols, 'porc_carencia_6_11')
 
@@ -93,8 +93,6 @@ dfs = [tmp1, tmp2, tmp3]
 dfsTemp = reduce(lambda left, right: pd.merge(left, right, on=['estado', 'anio'], how='outer'), dfs)
 # %%
 datosCompletos = pd.merge(datosCompletos, dfsTemp, on=['estado', 'anio'], how='outer')
-
-# %%
 
 # %%
 # Datos de ocupación infantil 
@@ -154,6 +152,7 @@ df_pivoted = df_pivoted.rename(columns={
 if 'Unnamed: 0' in datosCompletos.columns:
     datosCompletos = datosCompletos.drop(columns=['Unnamed: 0'])
 
+#%%
 # Merge usando 'estado' y 'anio' como llaves
 datosCompletos = pd.merge(datosCompletos, df_pivoted, on=['estado', 'anio'], how='outer')
 
@@ -161,6 +160,6 @@ datosCompletos = pd.merge(datosCompletos, df_pivoted, on=['estado', 'anio'], how
 datosCompletos.to_csv("../datos/porcentajes.csv")
 # df_final.to_csv('porcentajes_unificados.csv', index=False)
 
-# %%
-dfTest = pd.read_csv('../datos/porcentajes.csv')
-# %%
+#%%
+
+

@@ -79,7 +79,7 @@ fig.update_layout(
 
 fig.show()
 
-
+ 
 # %%
 # Grafica 2
 años = sorted(df['anio'].unique())
