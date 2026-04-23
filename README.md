@@ -43,6 +43,18 @@ Desarrollador de Software con enfoque en sistemas de alto rendimiento. Estudiant
     - `'porc_carencia_12_17'`: Personas con carencia entre 12 y 17 años
 - **Justificación de selección de datos** Los datos del CONEVAL son relevantes porque vinculan directamente  dimensiones de la pobreza multidimensional como lo es el rezago educativo e inseguridad alimentaria para demostrar con evidencia empírica que el hambre es un obstáculo para el acceso a la educación y avanzar en ella. Los datos incluyen cuatro años de medición (2016-2022) lo que nos permitirá comparar cómo ha sido el impacto de esas variables para la educación, los datos posibilitan cuestionar el sesgo que responsabiliza individualmente a las personas de su situación educativa, cuando en realidad la carencia alimentaria y carencias en general inciden en la inasistencia escolar. Además la tasa de abandono escolar proporcionado por el INEGI ayudará a encontrar relaciones más cercanas al impacto que tienen las carencias de pobreza con el estudio.
 
+    ## Datos
+
+- **Fuentes** 
+    - Consejo Nacional de Evaluación de la Política de Desarrollo Social (CONEVAL). (2022). "Anexo estadísti​co de pobreza en México". [Base de datos en línea]. Recuperado el 7 de abril de 2026 de https://www.coneval.org.mx/Medicion/MP/Documents/MMP_2022/AE_estatal_2022.zip Para condiciones de uso https://www.coneval.org.mx/Paginas/Pie/terminos-uso-libre.aspx 
+    - INEGI  Tasa de abandono escolar por entidad federativa según nivel educativo, ciclos escolares seleccionados de 2000/2001 a 2023/2024  Recuperado el 7 de abril de 2026 de https://www.inegi.org.mx/app/tabulados/interactivos/?px=Educacion_11&bd=Educacion 
+- **Fecha de descarga** 07-abril-2026
+- **Licencia Uso Libre con Atribución** Permite copia, distribución, adaptación y uso comercial, siempre que se dé crédito al CONEVAL, no se alteren metadatos, no se tergiverse el sentido original y no se implique aval oficial.
+- **Descripción de variables** Se tomaron en cuenta variables relacionadas a rezago educativo, carencia alimentaria y carencias en general. Los valores de todas las variables exceptuando `'estado'` y `'anio'` indican porcentajes.
+
+Link de descarga de datos compilados:
+TODO --- Documentar origen y estructura
+https://drive.google.com/file/d/1CBTqcbOAZbm1xlSVOKFV9mA-cErVV4uK/view?usp=drive_link
 
 
 # Storytelling
