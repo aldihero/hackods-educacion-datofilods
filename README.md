@@ -57,7 +57,6 @@ Desarrollador de Software con enfoque en sistemas de alto rendimiento. Estudiant
 - **Descripción de variables** Se tomaron en cuenta variables relacionadas a rezago educativo, carencia alimentaria y carencias en general. Los valores de todas las variables exceptuando `'estado'` y `'anio'` indican porcentajes.
 
 Link de descarga de datos compilados:
-TODO --- Documentar origen y estructura
 https://drive.google.com/file/d/1CBTqcbOAZbm1xlSVOKFV9mA-cErVV4uK/view?usp=drive_link
 
 
@@ -77,4 +76,4 @@ Para el procesamiento de datos se siguió el [script](scripts/limpieza.py) que p
 
 El [script](scripts/graficas.py) sirvió para hacer el maquetado de gráficas, dejando las que actualmente están en el tablero, sirvió para entender la librería de plotly y hacer un primera visualización de nuestros datos.
 
-El siguiente enlace es al avance al tablero https://aldihero.github.io/hackods-educacion-datofilods/HackODS.html
+El siguiente enlace es al avance al tablero https://aldihero.github.io/HackODS2026_datofilODS/
